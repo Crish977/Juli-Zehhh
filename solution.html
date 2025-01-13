@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juli Zeh - Interaktive Webseite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: rgb(255, 140, 0);
+            color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav button {
+            background-color: rgb(232, 128, 1);
+            color: rgb(0, 255, 247);
+            border: 2px solid rgba(200, 111, 2, 0.601);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: "Playwrite AU SA", serif;
+            border-radius: 50px;
+        }
+
+        nav button:hover {
+            background-color: #ab5e00;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-family: "Playwrite AU SA", serif;
+            color: rgb(0, 255, 247);
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .quiz-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .quiz-container input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .quiz-container button {
+            background-color: #e65c00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        header > img {
+            height: 80px;
+            margin: 0px 30px 0px 0px;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
+
+        h3 {
+        font-size: 1.5em;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, rgb(149, 0, 255), rgb(255, 0, 255));
+        background-size: 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rainbow 10s ease-out infinite;
+    }
+
+    @keyframes rainbow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    .content-with-images {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Two-thirds for text, one-third for images */
+    gap: 20px; /* Space between text and images */
+    align-items: start; /* Align the items at the start */
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between sections */
+}
+
+.image-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure the images span the full text height */
+}
+
+.image-content img {
+    width: 100%;
+    max-width: 300px; /* Limit the image width */
+    border-radius: 10px; /* Slight rounding */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add depth */
+}
+    </style>
+    <script>
+        function navigate(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function checkQuiz() {
+            const answer = document.querySelector('input[name="quiz-question"]:checked');
+            const result = document.getElementById('quiz-result');
+
+            if (answer && answer.value === "correct") {
+                result.textContent = "Richtig! Gut gemacht.";
+                result.style.color = "#00ff00";
+            } else {
+                result.textContent = "Leider falsch. Versuche es noch einmal.";
+                result.style.color = "#ff0000";
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="Juli Zeh.jpg" alt="portait von Juli Zeh" draggable="false">
+        <h1>Juli Zeh - Leben und Werk</h1>
+        <nav>
+            <button onclick="navigate('leben')">Leben</button>
+            <button onclick="navigate('werk')">Werk</button>
+            <button onclick="navigate('corpus')">Corpus Delicti</button>
+            <button onclick="navigate('quiz')">Quiz</button>
+        </nav>
+    </header>
+
+    <section id="leben">
+        <h2>Leben</h2>
+        <ul>
+            <li>Juli Zeh wurde am 30. Juni 1974 in Bonn geboren.</li>
+            <li>Tochter von Wolfgang Zeh, ehemaliger Direktor des Deutschen Bundestags.</li>
+            <li>Besuch der Otto-Kühne-Schule in Bonn, dort machte sie ihr Abitur.</li>
+            <li>Studium der Rechtswissenschaften mit Schwerpunkt Völkerrecht in Passau, Krakau, New York und Leipzig.</li>
+            <li>1998 erstes Staatsexamen (Jahrgangsbeste), 2003 zweites Staatsexamen.</li>
+            <li>Praktikum bei den Vereinten Nationen in New York.</li>
+            <li>Aufbaustudium europäisches Recht (LL.M.Eur.).</li>
+            <li>2010 Promotion in Saarbrücken über UN-Übergangsverwaltungen, ausgezeichnet mit dem Deutschen Studienpreis.</li>
+            <li>1996 Beginn eines Studiums am Deutschen Literaturinstitut Leipzig, Abschluss 2000 mit Diplom.</li>
+            <li>Seit 2007 wohnhaft in Barnewitz (Brandenburg).</li>
+            <li>Verheiratet mit dem Schriftsteller David Finck, Mutter von zwei Kindern.</li>
+            <li>Reiterin, thematisiert das Verhältnis von Mensch und Pferd in Büchern.</li>
+            <li>Seit 2019 ehrenamtliche Richterin am Verfassungsgericht des Landes Brandenburg.</li>
+        </ul>
+    </section>
+
+    <section id="werk" style="display: none;">
+        <h2>Werk</h2>
+        <ul>
+            <li>2001 veröffentlichte sie ihren ersten Roman "Adler und Engel".</li>
+            <li>Ihre Bücher wurden in über 35 Sprachen übersetzt.</li>
+            <li>Zu ihren bekanntesten Werken gehören "Spieltrieb", "Nullzeit" und "Unterleuten".</li>
+            <li>Juli Zeh ist auch für ihre Essays und politischen Stellungnahmen bekannt.</li>
+        </ul>
+        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <img src="./Speiltrieb.jpeg" alt="Speiltrieb Buch" style="width: 150px; height: auto; border-radius: 5px; margin-top: 30px;">
+            <img src="./Unterleuten.jpeg" alt="Unterleuten Buch" style="width: 150px; height: auto; border-radius: 5px; margin-top: 30px;">
+            <img src="./Nullzeit.jpeg" alt="Nullzeit Buch" style="width: 150px; height: auto; border-radius: 5px; margin-top: 30px;">
+        </div>
+    </section>
+
+    <section id="corpus" style="display: none;">
+        <div class="content-with-images">
+            <div class="text-content">
+                <h3>Beschreibung</h3>
+                <ul>
+                    <li>"Corpus Delicti" ist ein Roman über eine Gesundheitsdiktatur in der Zukunft.</li>
+                    <li>Das Buch wurde 2009 veröffentlicht.</li>
+                </ul>
+                <h3>Bezug zu Juli Zehs Leben</h3>
+                <ul>
+                    <li>Rechtswissenschaftliche Ausbildung: Juli Zeh studierte Rechtswissenschaften, <br />
+                        was ihr tiefes Verständnis für Themen wie Recht, Freiheit und gesellschaftliche<br />
+                        Normen prägte. Diese Themen spielen eine zentrale Rolle in Corpus Delicti.</li>
+                    <li>Kritik an Überwachung und Kontrolle: Zeh ist eine engagierte Kritikerin von<br />
+                        staatlicher Überwachung und Einschränkungen individueller Freiheiten. Diese<br />
+                        Haltung spiegelt sich im dystopischen Setting des Romans wider.</li>
+                    <li>Interesse an gesellschaftspolitischen Themen: Sie beschäftigt sich intensiv<br />
+                        mit gesellschaftlichen Entwicklungen und deren Auswirkungen auf Freiheit<br />
+                        und Verantwortung des Einzelnen.</li>
+                    <li>Philosophischer Hintergrund: Zeh zeigt in vielen ihrer Werke eine Vorliebe<br />
+                        für philosophische Fragestellungen, insbesondere zur Abwägung von Freiheit<br />
+                        und Sicherheit.</li>
+                </ul>
+                <h3>Gründe für das Schreiben des Buches</h3>
+                <ul>
+                    <li>Warnung vor einem Überwachungsstaat: Zeh möchte auf die Gefahren hinweisen,<br />
+                        die durch übermäßige staatliche Kontrolle entstehen, insbesondere wenn diese<br />
+                        unter dem Vorwand von Gesundheit und Sicherheit eingeführt wird.</li>
+                    <li>Kritik an Gesundheitsfanatismus: Das Buch thematisiert die Überhöhung von<br />
+                        Gesundheit als gesellschaftliches Ideal und die Einschränkung persönlicher<br />
+                        Freiheiten.</li>
+                    <li>Anstoß zur gesellschaftlichen Reflexion: Zeh fordert die Leser auf, kritisch<br />
+                        über den Einfluss von Technologie, staatlicher Kontrolle und Normen auf<br />
+                        individuelle Freiheit nachzudenken.</li>
+                    <li>Auseinandersetzung mit der Spannung zwischen Freiheit und Sicherheit: Sie<br />
+                        möchte die Leser dazu bringen, die Balance zwischen diesen beiden Werten<br />
+                        zu hinterfragen.</li>
+                </ul>  
+            </div>
+            <div class="image-content">
+                <img src="./CD1.jpeg" alt="Corpus Delicti Bild 1">
+                <img src="./CD2.jpeg" alt="Corpus Delicti Bild 2">
+            </div>
+        </div>     
+    </section>
+
+    <section id="quiz" style="display: none;">
+        <h2>Quiz</h2>
+        <div class="quiz-container">
+            <p>Wann wurde Juli Zeh geboren?</p>
+            <label><input type="radio" name="quiz-question-1" value="correct"> 1974</label><br>
+            <label><input type="radio" name="quiz-question-1" value="wrong"> 1980</label><br>
+            <label><input type="radio" name="quiz-question-1" value="wrong"> 1965</label><br>
+        </div>
+        <div class="quiz-container">
+            <p>Wann veröffentlichte Juli Zeh ihr erstes Roman?</p>
+            <label><input type="radio" name="quiz-question-2" value="wrong"> 2000</label><br>
+            <label><input type="radio" name="quiz-question-2" value="correct"> 2001</label><br>
+            <label><input type="radio" name="quiz-question-2" value="wrong"> 2005</label><br>
+        </div>
+        <div class="quiz-container">
+            <p>Welche Art von Ausbildung hat Juli Zeh gemacht?</p>
+            <label><input type="radio" name="quiz-question-3" value="wrong"> Medizin</label><br>
+            <label><input type="radio" name="quiz-question-3" value="wrong"> Architektur</label><br>
+            <label><input type="radio" name="quiz-question-3" value="correct"> Rechtswissenschaften</label><br>
+        </div>
+        <div class="quiz-container">
+            <p>Welche ist der zentrale Grund, warum sie "Corpus Delicti" geschrieben hat?</p>
+            <label><input type="radio" name="quiz-question-4" value="wrong"> Um Gesundheitsvorsorge zu fördern</label><br>
+            <label><input type="radio" name="quiz-question-4" value="wrong"> Um die perfekte Gesellschaft zu schildern</label><br>
+            <label><input type="radio" name="quiz-question-4" value="correct"> Um vor einem Überwachungsstaat zu warnen</label><br>
+        </div>
+        <button onclick="checkQuiz()">Überprüfen</button>
+        <p id="quiz-result"></p>
+    </section>
+    
+    <script>
+        function checkQuiz() {
+            const allQuestions = document.querySelectorAll('.quiz-container');
+            const result = document.getElementById('quiz-result');
+            let allCorrect = true;
+    
+            allQuestions.forEach(question => {
+                const selected = question.querySelector('input[type="radio"]:checked');
+                if (!selected || selected.value !== "correct") {
+                    allCorrect = false;
+                }
+            });
+    
+            if (allCorrect) {
+                result.textContent = "Richtig! Gut gemacht.";
+                result.style.color = "#00ff00";
+            } else {
+                result.textContent = "Leider falsch. Versuche es noch einmal.";
+                result.style.color = "#ff0000";
+            }
+        }
+    </script>
+    
+</body>
+</html>
